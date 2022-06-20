@@ -21,7 +21,7 @@ USE `mydb` ;
 -- Table `mydb`.`User`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`User` (
-  `ID` INT NOT NULL,
+  `ID` INT AUTO_INCREMENT,
   `SharesInfo` VARCHAR(3) NULL,
   PRIMARY KEY (`ID`))
 ENGINE = InnoDB;
