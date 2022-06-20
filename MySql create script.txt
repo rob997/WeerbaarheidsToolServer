@@ -21,7 +21,7 @@ USE `mydb` ;
 -- Table `mydb`.`User`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`User` (
-  `ID` INT NOT NULL,
+  `ID` INT,
   `SharesInfo` VARCHAR(3) NULL,
   PRIMARY KEY (`ID`))
 ENGINE = InnoDB;
@@ -31,7 +31,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`PasswordInfo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`PasswordInfo` (
-  `User_ID` INT NOT NULL,
+  `User_ID` INT,
   `PasswordStrength` INT NULL,
   `RecyclesPW` VARCHAR(3) NULL,
   PRIMARY KEY (`User_ID`),
@@ -47,7 +47,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`EmailInfo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`EmailInfo` (
-  `User_ID` INT NOT NULL,
+  `User_ID` INT,
   `Hits` INT NULL,
   PRIMARY KEY (`User_ID`),
   CONSTRAINT `fk_EmailInfo_User1`
