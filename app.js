@@ -41,6 +41,7 @@ app.post("/addUser", function(req, res) {
         console.log("1 record successfully inserted into db");
     }
   });
+}
 
 
 app.get("/", (req, res) =>
