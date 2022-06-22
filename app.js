@@ -26,7 +26,7 @@ app.post("/somepost", (req, res) => {
 
 app.get("/userCount", (req, res) => {
   // get data from forms and add to the table called user..
-  const query = `SELECT COUNT(*) AS count FROM user`;
+  const query = `SELECT COUNT(*) AS count FROM user;`;
 
   connection.query(query, function (err, results) {
     if (err) {
@@ -50,7 +50,7 @@ app.post("/addUser", (req, res) => {
   let sharesInfo = req.body.sharesInfo;
 
   // get data from forms and add to the table called user..
-  const query = `INSERT INTO User (ID, SharesInfo) VALUES (${id}, '${sharesInfo}')`;
+  const query = `INSERT INTO User (ID, SharesInfo) VALUES (${id}, '${sharesInfo}');`;
 
   connection.query(query, function (err) {
     if (err) {
@@ -61,6 +61,7 @@ app.post("/addUser", (req, res) => {
       // Throw a success message here.
       console.log("1 user record successfully inserted into db");
     }
+    res.end("User added");
   });
 });
 
@@ -69,7 +70,7 @@ app.post("/addEmail", (req, res) => {
   let id = req.body.id;
   let hits = req.body.hits;
 
-  const query = `INSERT INTO EmailInfo (User_ID, Hits) VALUES (${id}, '${hits}')`;
+  const query = `INSERT INTO EmailInfo (User_ID, Hits) VALUES (${id}, '${hits}');`;
 
   connection.query(query, function (err) {
     if (err) {
@@ -80,6 +81,7 @@ app.post("/addEmail", (req, res) => {
       // Throw a success message here.
       console.log("1 email record successfully inserted into db");
     }
+    res.end("Email added");
   });
 });
 
@@ -89,7 +91,7 @@ app.post("/addPassword", (req, res) => {
   let strength = req.body.strength;
   let recyclesPW = req.body.recyclesPW;
 
-  const query = `INSERT INTO PasswordInfo (User_ID, PasswordStrength, RecyclesPW) VALUES (${id}, ${strength}, '${recyclesPW}')`;
+  const query = `INSERT INTO PasswordInfo (User_ID, PasswordStrength, RecyclesPW) VALUES (${id}, ${strength}, '${recyclesPW}');`;
 
   connection.query(query, function (err) {
     if (err) {
@@ -100,6 +102,7 @@ app.post("/addPassword", (req, res) => {
       // Throw a success message here.
       console.log("1 password record successfully inserted into db");
     }
+    res.end("Password added");
   });
 });
 
