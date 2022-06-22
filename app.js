@@ -61,7 +61,7 @@ app.post("/addUser", (req, res) => {
       // Throw a success message here.
       console.log("1 user record successfully inserted into db");
     }
-    res.end("User added");
+    res.json("User added"); // <-- Hier wordt de response naar de client gestuurd
   });
 });
 
