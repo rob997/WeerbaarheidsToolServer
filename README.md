@@ -3,7 +3,9 @@ Dit project is ontwikkeld door Rob Perdok in naam van CyberSecurity Noord-Nederl
 Installatie:
 
 Stap 1: Clone de code met onderstaand commando:
+```
 git clone https://github.com/rob997/WeerbaarheidsToolServer.git
+```
 
 Stap 2: Navigeer in de geclonede folder:
 ```
