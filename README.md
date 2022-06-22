@@ -1,4 +1,4 @@
-Deze project is ontwikkeld door Rob Perdok in naam van CyberSecurity Noord-Nederland. Het behoort bij de applicatie WeerbaarheidsTool MKB die te vinden is in een aparte repository. De server beantwoord de requests van de React Native client.
+Dit project is ontwikkeld door Rob Perdok in naam van CyberSecurity Noord-Nederland. Het behoort bij de applicatie WeerbaarheidsTool MKB die te vinden is in een aparte repository. De server beantwoord de requests van de React Native client.
 
 Installatie:
 
