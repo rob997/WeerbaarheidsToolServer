@@ -61,7 +61,7 @@ app.post("/addUser", (req, res) => {
       // Throw a success message here.
       console.log("1 user record successfully inserted into db");
     }
-    res.json("User added"); // <-- Hier wordt de response naar de client gestuurd
+    res.json("User added with id: " + id + " and sharesInfo " + sharesInfo);
   });
 });
 
@@ -81,7 +81,7 @@ app.post("/addEmail", (req, res) => {
       // Throw a success message here.
       console.log("1 email record successfully inserted into db");
     }
-    res.end("Email added");
+    res.json("Email added with id: " + id + " and hits " + hits);
   });
 });
 
@@ -102,7 +102,14 @@ app.post("/addPassword", (req, res) => {
       // Throw a success message here.
       console.log("1 password record successfully inserted into db");
     }
-    res.end("Password added");
+    res.json(
+      "Password added with id: " +
+        id +
+        " strength " +
+        strength +
+        " and recyclesPW " +
+        recyclesPW
+    );
   });
 });
 
