@@ -26,7 +26,7 @@ app.post("/somepost", (req, res) => {
 
 app.get("/userCount", (req, res) => {
   // get data from forms and add to the table called user..
-  const query = `SELECT COUNT(*) AS count FROM user;`;
+  const query = `SELECT COUNT(*) AS count FROM User;`;
 
   connection.query(query, function (err, results) {
     if (err) {
