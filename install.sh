@@ -6,7 +6,6 @@ fi
 
 
 apt update
-apt upgrade
 
 apt install -y mysql
 apt install -y nodejs
