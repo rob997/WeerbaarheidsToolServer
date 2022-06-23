@@ -4,6 +4,6 @@ module.exports = {
   //Database connection
   host: "localhost",
   user: "react",
-  password: "Y*s$J5CRPn^Q$3@e",
+  password: "Y*s!J5CRPn^Q?3@e",
   database: "mydb",
 };
