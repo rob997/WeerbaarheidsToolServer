@@ -7,10 +7,18 @@ fi
 
 apt update
 
-apt install -y mysql
+apt install -y mysql-server
 apt install -y nodejs
 
-mysql -u root -p mydb < MySqlCreateScript.txt
+mysql -uroot < MySqlCreateScript.txt
+echo ""
+echo "Trying to create database: mydb"
 
-echo "Enter a valid HaveIBeenPwned API key in config.js"
-echo "Run server by typing: node app.js"
+mysql -uroot -e "CREATE USER 'react'@'localhost' IDENTIFIED BY 'Y*s!J5CRPn^Q?3@e'"
+mysql -uroot -e "GRANT SELECT, INSERT ON mydb.* TO 'react'@'localhost'"
+echo "Trying to create database user: 'react' and granting INSERT, SELECT rights on mydb"
+
+echo ""
+echo "ATTENTION:"
+echo "Enter a valid HaveIBeenPwned API key in WeerbaarheidsToolServer/config.js"
+echo "Run server with command: node app.js"
