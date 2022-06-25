@@ -14,7 +14,7 @@ mysql -uroot < MySqlCreateScript.txt
 echo ""
 echo "Trying to create database: mydb"
 
-mysql -uroot -e "CREATE USER 'react'@'localhost' IDENTIFIED BY 'Y*s!J5CRPn^Q?3@e'"
+mysql -uroot -e "CREATE USER 'react'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Y*s!J5CRPn^Q?3@e'"
 mysql -uroot -e "GRANT SELECT, INSERT ON mydb.* TO 'react'@'localhost'"
 echo "Trying to create database user: 'react' and granting INSERT, SELECT rights on mydb"
 
