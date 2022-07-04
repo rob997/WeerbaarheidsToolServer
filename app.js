@@ -4,7 +4,6 @@ const api_helper = require("./API_helper");
 const app = express();
 const port = 3000;
 const bodyParser = require("body-parser");
-const expressValidator = require("express-validator");
 const mysql = require("mysql");
 
 // Connect to database
@@ -18,7 +17,6 @@ connection.connect();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(expressValidator());
 
 app.get("/userCount", (req, res) => {
   // get data from forms and add to the table called user..
