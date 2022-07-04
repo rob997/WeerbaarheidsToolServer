@@ -4,6 +4,7 @@ const api_helper = require("./API_helper");
 const app = express();
 const port = 3000;
 const bodyParser = require("body-parser");
+const expressValidator = require("express-validator");
 const mysql = require("mysql");
 
 // Connect to database
@@ -17,12 +18,7 @@ connection.connect();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// Test POST request
-app.post("/somepost", (req, res) => {
-  console.log("Name:", req.query.name);
-  res.status(200);
-});
+app.use(expressValidator());
 
 app.get("/userCount", (req, res) => {
   // get data from forms and add to the table called user..
@@ -46,8 +42,8 @@ app.get("/userCount", (req, res) => {
 
 // Add a user to User table
 app.post("/addUser", (req, res) => {
-  let id = req.body.id;
-  let sharesInfo = req.body.sharesInfo;
+  let id = req.body.id.replace(/\s+/g, "");
+  let sharesInfo = req.body.sharesInfo.replace(/\s+/g, "");
 
   // get data from forms and add to the table called user..
   const query = `INSERT INTO User (ID, SharesInfo) VALUES (${id}, '${sharesInfo}');`;
@@ -67,8 +63,8 @@ app.post("/addUser", (req, res) => {
 
 // Add email info to EmailInfo table
 app.post("/addEmail", (req, res) => {
-  let id = req.body.id;
-  let hits = req.body.hits;
+  let id = req.body.id.replace(/\s+/g, "");
+  let hits = req.body.hits.replace(/\s+/g, "");
 
   const query = `INSERT INTO EmailInfo (User_ID, Hits) VALUES (${id}, '${hits}');`;
 
@@ -87,9 +83,9 @@ app.post("/addEmail", (req, res) => {
 
 // Add pw strength and recycles to PasswordInfo table
 app.post("/addPassword", (req, res) => {
-  let id = req.body.id;
-  let strength = req.body.strength;
-  let recyclesPW = req.body.recyclesPW;
+  let id = req.body.id.replace(/\s+/g, "");
+  let strength = req.body.strength.replace(/\s+/g, "");
+  let recyclesPW = req.body.recyclesPW.replace(/\s+/g, "");
 
   const query = `INSERT INTO PasswordInfo (User_ID, PasswordStrength, RecyclesPW) VALUES (${id}, ${strength}, '${recyclesPW}');`;
 
@@ -113,26 +109,9 @@ app.post("/addPassword", (req, res) => {
   });
 });
 
-// Test Get request in root directory
-app.get("/", (req, res) =>
-  res.send("Welcome to Make REST API Calls In Express!")
-);
-
-// Test Get request
-app.get("/getAPIResponse", (req, res) => {
-  api_helper
-    .make_API_call("https://jsonplaceholder.typicode.com/todos/1")
-    .then((response) => {
-      res.json(response);
-    })
-    .catch((error) => {
-      res.send(error);
-    });
-});
-
 // Request email information from HaveIBeenPwned API
 app.get("/getEmailBreaches", (req, res) => {
-  let email = req.query.email;
+  let email = req.query.email.replace(/\s+/g, "");
 
   api_helper
     .make_API_call_key(
