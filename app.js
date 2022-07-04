@@ -40,8 +40,8 @@ app.get("/userCount", (req, res) => {
 
 // Add a user to User table
 app.post("/addUser", (req, res) => {
-  let id = req.body.id.replace(/\s+/g, "");
-  let sharesInfo = req.body.sharesInfo.replace(/\s+/g, "");
+  let id = req.body.id.toString().replace(/\s+/g, "");
+  let sharesInfo = req.body.sharesInfo.toString().replace(/\s+/g, "");
 
   // get data from forms and add to the table called user..
   const query = `INSERT INTO User (ID, SharesInfo) VALUES (${id}, '${sharesInfo}');`;
@@ -61,8 +61,8 @@ app.post("/addUser", (req, res) => {
 
 // Add email info to EmailInfo table
 app.post("/addEmail", (req, res) => {
-  let id = req.body.id.replace(/\s+/g, "");
-  let hits = req.body.hits.replace(/\s+/g, "");
+  let id = req.body.id.toString().replace(/\s+/g, "");
+  let hits = req.body.hits.toString().replace(/\s+/g, "");
 
   const query = `INSERT INTO EmailInfo (User_ID, Hits) VALUES (${id}, '${hits}');`;
 
@@ -81,9 +81,9 @@ app.post("/addEmail", (req, res) => {
 
 // Add pw strength and recycles to PasswordInfo table
 app.post("/addPassword", (req, res) => {
-  let id = req.body.id.replace(/\s+/g, "");
-  let strength = req.body.strength.replace(/\s+/g, "");
-  let recyclesPW = req.body.recyclesPW.replace(/\s+/g, "");
+  let id = req.body.id.toString().replace(/\s+/g, "");
+  let strength = req.body.strength.toString().replace(/\s+/g, "");
+  let recyclesPW = req.body.recyclesPW.toString().replace(/\s+/g, "");
 
   const query = `INSERT INTO PasswordInfo (User_ID, PasswordStrength, RecyclesPW) VALUES (${id}, ${strength}, '${recyclesPW}');`;
 
@@ -109,7 +109,7 @@ app.post("/addPassword", (req, res) => {
 
 // Request email information from HaveIBeenPwned API
 app.get("/getEmailBreaches", (req, res) => {
-  let email = req.query.email.replace(/\s+/g, "");
+  let email = req.query.email.toString().replace(/\s+/g, "");
 
   api_helper
     .make_API_call_key(
